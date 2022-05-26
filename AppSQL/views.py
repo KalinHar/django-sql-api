@@ -17,15 +17,15 @@ def clientApi(request,id=0):
         return JsonResponse(clients_serializer.data,safe=False)
     elif request.method=='POST':
         client_data=JSONParser().parse(request)
-        clients_serializer=ClientSerializer(data=client_data)
+        clients_serializer=ClientsSerializer(data=client_data)
         if clients_serializer.is_valid():
             clients_serializer.save()
             return JsonResponse("Added Successfully",safe=False)
         return JsonResponse("Failed to Add",safe=False)
     elif request.method=='PUT':
         client_data=JSONParser().parse(request)
-        client=Clients.objects.get(client_id=client_data['client'])
-        clients_serializer=ClientSerializer(client,data=client_data)
+        client=Clients.objects.get(client_id=id)
+        clients_serializer=ClientsSerializer(client,data=client_data)
         if clients_serializer.is_valid():
             clients_serializer.save()
             return JsonResponse("Updated Successfully",safe=False)
