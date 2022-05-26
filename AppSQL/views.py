@@ -10,10 +10,21 @@ from django.core.files.storage import default_storage
 
 
 @csrf_exempt
-def clientApi(request,id=0):
+def clientsApi(request):
     if request.method=='GET':
         clients = Clients.objects.all()
         clients_serializer=ClientsSerializer(clients,many=True)
+        return JsonResponse(clients_serializer.data,safe=False)
+    elif request.method=='DELETE':
+        Clients.objects.all().delete()
+        return JsonResponse("All Deleted Successfully",safe=False)
+
+
+@csrf_exempt
+def clientApi(request,id=0):
+    if request.method=='GET':
+        client=Clients.objects.get(client_id=id)
+        clients_serializer=ClientsSerializer(client)
         return JsonResponse(clients_serializer.data,safe=False)
     elif request.method=='POST':
         client_data=JSONParser().parse(request)
