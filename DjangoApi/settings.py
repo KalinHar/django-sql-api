@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'DjangoApi.AppSQL',
-    # 'AppSQL.apps.AppsqlConfig',
+    'AppSQL.apps.AppsqlConfig',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
