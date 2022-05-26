@@ -7,4 +7,7 @@ from django.conf import settings
 urlpatterns=[
     url(r'^client$',views.clientApi),
     url(r'^client/([0-9]+)$',views.clientApi),
+
+    url(r'^note$',views.noteApi),
+    url(r'^note/([0-9]+)$',views.noteApi),
 ]
