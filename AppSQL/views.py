@@ -13,7 +13,7 @@ from django.core.files.storage import default_storage
 def clientApi(request,id=0):
     if request.method=='GET':
         clients = Clients.objects.all()
-        clients_serializer=ClientSerializer(clients,many=True)
+        clients_serializer=ClientsSerializer(clients,many=True)
         return JsonResponse(clients_serializer.data,safe=False)
     elif request.method=='POST':
         client_data=JSONParser().parse(request)

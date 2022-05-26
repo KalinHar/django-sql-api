@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from AppSql.models import Notes, Clients
+from AppSQL.models import Notes, Clients
 
 class NotesSerializer(serializers.ModelSerializer):
     class Meta:
